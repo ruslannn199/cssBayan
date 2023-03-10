@@ -1,4 +1,62 @@
+* {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 body {
 	margin: 0;
-	padding: 0;
+	padding: 1% 15%;
+}
+
+#accordion {
+	width: 100%;
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.memeCtn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transition: display 5s ease-in-out;
+}
+
+.memeCtn:hover .memeImg {
+	visibility: hidden;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+.collapseIcon {
+	color: black;
+	visibility: hidden;
+	transition: transform 0.4s;
+}
+
+#accordion:hover .memeCtn > .textCtn .collapseIcon {
+	visibility: visible;
+	transition: transform 0.4s;
+}
+
+input[type=radio]:checked ~ .collapseIcon {
+	transform: rotate(45deg);
+}
+
+.textCtn {
+	padding: 1vmin;
+	display: flex;
+	height: 10vmin;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid black;
+}
+
+.memeImg {
+	align-self: center;
+	padding: 2vmin;
+	width: 50%;
+	display: none;
 }
