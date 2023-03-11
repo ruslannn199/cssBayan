@@ -5,58 +5,87 @@
 body {
 	margin: 0;
 	padding: 1% 15%;
+	background-color: #F5F5EB;
+	min-height: 100vmin;
+	color: blue;
+	transition: color 0.1s ease-in-out;
 }
 
 #accordion {
-	width: 100%;
-	display: flex;
+	display: block;
+	width: 80vmin;
 	margin: 0 auto;
-	justify-content: center;
-	flex-direction: column;
+}
+
+.meme {
+	transition: opacity 0.1s ease-in-out;
+}
+
+.memeInfo {
+	font-size: 2.5vmin;
+	border-top: 0.2vmin solid #bfbfb4;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.memeInfo .collapseIcon {
+	transition: transform 0.5s ease, color 0.15s ease-in-out;
 }
 
 .memeCtn {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	transition: display 5s ease-in-out;
-}
-
-.memeCtn:hover .memeImg {
-	visibility: hidden;
-}
-
-input[type=radio] {
-	display: none;
+	align-items: center;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.75s ease-in-out;
+	cursor: pointer;
 }
 
 .collapseIcon {
-	color: black;
 	visibility: hidden;
-	transition: transform 0.4s;
+	width: 2vmin;
+	transition: visibility 0.35s ease-in-out;
 }
 
-#accordion:hover .memeCtn > .textCtn .collapseIcon {
+.meme:hover .collapseIcon,
+input[type=radio]:checked + .memeInfo .collapseIcon{
+  transform: rotate(45deg);
+}
+
+#accordion input[type="radio"] {
+  display: none;
+}
+
+#accordion:hover .memeInfo:hover + .memeCtn,
+input[type=radio]:checked + .memeInfo + .memeCtn,
+.memeCtn:hover {
+	max-height: 100vmin;
+}
+
+#accordion:hover .meme:not(:active) .memeInfo,
+.meme:not(:active) input[type=radio]:checked + .memeInfo {
+	color: black;
+}
+
+#accordion:hover .collapseIcon {
 	visibility: visible;
-	transition: transform 0.4s;
 }
 
-input[type=radio]:checked ~ .collapseIcon {
-	transform: rotate(45deg);
+h1 {
+	color: black;
+	font-size: 5vmin;
 }
 
-.textCtn {
-	padding: 1vmin;
-	display: flex;
-	height: 10vmin;
-	justify-content: space-between;
-	align-items: center;
-	border-top: 1px solid black;
+.meme:active {
+	opacity: 0.5;
 }
 
 .memeImg {
-	align-self: center;
-	padding: 2vmin;
-	width: 50%;
-	display: none;
+	width: 40vmin;
+	padding: 2vmin 20%;
 }
